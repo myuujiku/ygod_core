@@ -18,10 +18,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 use std::fs;
 use std::path::PathBuf;
 
-use crossbeam_channel::Sender;
-
 use crate::utils::CACHE;
 use crate::utils::PATHS;
+
+use super::StatusUpdate;
 
 /// Root of the image API endpoint.
 static BASE_URL: &str = "https://images.ygoprodeck.com/images/";
@@ -66,8 +66,8 @@ pub fn get_url(image_type: ImageType) -> String {
 ///
 /// * `image_type` – Type of the images to download.
 ///
-/// * `sender` – Gtk object to send the completion status to.
-pub fn download_missing_cards(image_type: ImageType, sender: Sender<(f64, String)>) {
+/// * `status_updater` – Object to send the completion status to.
+pub fn download_missing_cards(image_type: ImageType, status_updater: &impl StatusUpdate) {
     let paths = fs::read_dir(get_type_path(&image_type)).unwrap();
 
     let existing_images: Vec<u32> = paths
@@ -107,11 +107,10 @@ pub fn download_missing_cards(image_type: ImageType, sender: Sender<(f64, String
             .unwrap();
         }
 
-        sender
-            .send((
+        status_updater
+            .update(
                 (i + 1) as f64 / cards_to_download as f64,
                 format!("Cards downloaded: {}/{}", i + 1, cards_to_download),
-            ))
-            .expect("Could not send through channel");
+            );
     }
 }
