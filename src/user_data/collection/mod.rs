@@ -113,7 +113,7 @@ impl Collection {
         .0
     }
 
-    /// Adds a new `Change` and applies it to [`cards`][`ProgressiveCollection::cards`].
+    /// Adds a new `Change` and applies it to [`cards`][`Collection::cards`].
     pub fn add_change(&mut self, change: Change) {
         match &change {
             Change::Add(content) => self.add_cards(&content.cards),
@@ -125,7 +125,7 @@ impl Collection {
     }
 
     /// Removes the most recent `Change` and applies the inverse action to
-    /// [`cards`][`ProgressiveCollection::cards`].
+    /// [`cards`][`Collection::cards`].
     pub fn undo_change(&mut self) {
         let change = self.changes.pop_front().unwrap();
 
