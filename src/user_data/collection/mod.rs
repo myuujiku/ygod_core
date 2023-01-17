@@ -17,10 +17,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 mod card;
 mod change;
+mod draft_settings;
+mod draft_type;
 mod meta_data;
 
 pub use card::Card;
 pub use change::Change;
+pub use draft_settings::DraftSettings;
+pub use draft_type::DraftType;
 pub use meta_data::MetaData;
 
 use std::collections::{HashMap, VecDeque};
@@ -50,6 +54,7 @@ pub struct Collection {
     pub cards: HashMap<Card, u8>,
     pub changes: VecDeque<Change>,
     pub tags: HashMap<String, Vec<Card>>,
+    pub draft_types: Vec<DraftType>,
 }
 
 impl Collection {
