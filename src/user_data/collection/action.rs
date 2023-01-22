@@ -34,10 +34,15 @@ pub struct BonusDraft {
 }
 
 #[derive(Serialize, Deserialize, Default, Debug)]
+pub struct BonusCard {
+    pub name: String,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug)]
 pub enum Action {
     #[default]
     None,
     MainDraft(MainDraft),
     BonusDraft(BonusDraft),
-    // BonusCard(???), adding this would come with additional consequences though.
+    BonusCard(BonusCard),
 }
