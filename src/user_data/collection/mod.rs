@@ -15,16 +15,16 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+mod action;
 mod card;
 mod change;
 mod draft_settings;
-mod draft_type;
 mod meta_data;
 
+pub use draft_type::Action;
 pub use card::Card;
 pub use change::Change;
 pub use draft_settings::DraftSettings;
-pub use draft_type::DraftType;
 pub use meta_data::MetaData;
 
 use std::collections::{HashMap, VecDeque};
@@ -54,7 +54,7 @@ pub struct Collection {
     pub cards: HashMap<Card, u8>,
     pub changes: VecDeque<Change>,
     pub tags: HashMap<String, Vec<Card>>,
-    pub draft_types: Vec<DraftType>,
+    pub actions: Vec<Action>,
 }
 
 impl Collection {

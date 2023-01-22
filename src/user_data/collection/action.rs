@@ -34,7 +34,7 @@ pub struct BonusDraft {
 }
 
 #[derive(Serialize, Deserialize, Default, Debug)]
-pub enum DraftType {
+pub enum Action {
     #[default]
     None,
     MainDraft(MainDraft),
