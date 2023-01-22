@@ -15,26 +15,22 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-mod battle_pack_settings;
-mod choice_settings;
+use super::Collection;
 
-use serde::{Deserialize, Serialize};
-
-pub use battle_pack_settings::BattlePackSettings;
-pub use choice_settings::ChoiceSettings;
-
-#[derive(Serialize, Deserialize, Default, Debug)]
-pub enum DraftSettings {
-    #[default]
-    None,
-    BattlePackDraft(BattlePackSettings),
-    ChoiceDraft(ChoiceSettings),
-    // StandardDraft(StandardSettings),
+pub struct CollectionBuilder {
+    collection: Collection,
 }
 
-#[derive(Serialize, Deserialize, Default, Debug)]
-pub enum SetRotation {
-    #[default]
-    Disabled,
-    Enabled(usize),
+impl CollectionBuilder {
+    /// Constructs a new `CollectionBuilder` with a default [`Collection`].
+    pub fn new() -> Self {
+        Self {
+            collection: Collection::default(),
+        }
+    }
+
+    /// Consumes `self` and returns a [`Collection`].
+    pub fn build(self) -> Collection {
+        self.collection
+    }
 }

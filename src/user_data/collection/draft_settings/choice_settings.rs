@@ -17,5 +17,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use serde::{Deserialize, Serialize};
 
+use super::SetRotation;
+
 #[derive(Serialize, Deserialize, Default, Debug)]
-pub struct ChoiceSettings {}
+pub struct ChoiceSettings {
+    pub rounds_num: usize,
+    pub choices_num: usize,
+    pub selections_num: usize,
+    pub cards_num: usize,
+    pub sets: Vec<Vec<String>>,
+    pub rotate: SetRotation,
+    pub allow_undo: bool,
+}

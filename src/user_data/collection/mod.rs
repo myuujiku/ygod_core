@@ -18,13 +18,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 mod action;
 mod card;
 mod change;
+mod collection_builder;
 mod draft_settings;
 mod meta_data;
 
-pub use draft_type::Action;
+pub use action::Action;
 pub use card::Card;
 pub use change::Change;
-pub use draft_settings::DraftSettings;
+pub use collection_builder::CollectionBuilder;
+pub use draft_settings::{DraftSettings, SetRotation};
 pub use meta_data::MetaData;
 
 use std::collections::{HashMap, VecDeque};
@@ -58,6 +60,11 @@ pub struct Collection {
 }
 
 impl Collection {
+    /// Constructs a [`CollectionBuilder`].
+    pub fn builder() -> CollectionBuilder {
+        CollectionBuilder::new()
+    }
+
     /// Returns the names of all locally saved collections.
     pub fn get_names() -> Vec<String> {
         if let Ok(read_dir) = PATHS.user_paths.collections.read_dir() {
