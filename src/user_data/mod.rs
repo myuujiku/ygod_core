@@ -17,7 +17,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 /// Module containing a serializable card collection data type.
 pub mod progressive_collection;
+pub mod collection;
 
 pub use progressive_collection::{
     DraftSettings, MetaData, ProgressiveCollection, LAST_CHANGED_FORMAT,
 };
+
+pub use collection::{Collection};
