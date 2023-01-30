@@ -19,8 +19,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 mod collection;
 
 pub use collection::{
+    Action,
+    Card,
+    Change,
     Collection,
+    CollectionBuilder,
     DraftSettings,
+    SetRotation,
     MetaData,
     LAST_CHANGED_FORMAT,
 };

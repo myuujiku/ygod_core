@@ -21,4 +21,5 @@ use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize, Clone, Default, Debug, Eq, Hash, PartialEq)]
 pub struct Card {
     pub id: u32,
+    // pub tags: Vec<String>,
 }
