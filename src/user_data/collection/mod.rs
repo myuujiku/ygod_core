@@ -86,7 +86,7 @@ impl Collection {
     /// # Arguments
     ///
     /// * `name` – Name of the collection.
-    pub fn from_name(name: String) -> Self {
+    pub fn from_name(name: &String) -> Self {
         decode(
             &fs::read(&PATHS.user_paths.collections.join(name))
                 .expect("Failed to read collection."),
