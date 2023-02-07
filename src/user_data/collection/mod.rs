@@ -48,7 +48,7 @@ static BINCODE_CONFIG: Configuration<BigEndian, Fixint> = bincode::config::stand
     .with_fixed_int_encoding()
     .write_fixed_array_length();
 
-pub static LAST_CHANGED_FORMAT: &str = "%Y-%m-%d %H:%M:%S";
+pub static LAST_CHANGED_FORMAT: &str = "%Y%m%d_%H%M%S";
 
 #[derive(Serialize, Deserialize, Default, Debug)]
 pub struct Collection {
