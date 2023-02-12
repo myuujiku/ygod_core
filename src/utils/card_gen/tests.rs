@@ -17,8 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use super::*;
 
-use crate::logic::utils::cache::CACHE;
-use crate::logic::utils::http;
+use crate::utils::cache::CACHE;
+use crate::utils::http;
 
 fn init_cg() -> CardGenerator {
     CardGenerator::new(vec![1], 3)

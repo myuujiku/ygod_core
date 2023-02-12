@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-use ygo_destiny::logic::utils::http;
+use ygod_core::utils::http;
 
 #[test]
 fn update_successful() {

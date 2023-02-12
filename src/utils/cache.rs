@@ -18,11 +18,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //! # Examples
 //!
 //! ```rust
-//! use ygo_destiny::logic::utils::cache::CACHE;
+//! use ygod_core::utils::{http, CACHE};
 //!
-//! let banlists = &CACHE.lock().unwrap().banlists;
-//! let cardinfo = &CACHE.lock().unwrap().cardinfo;
-//! let cardsets = &CACHE.lock().unwrap().cardsets;
+//! // Load local files into cache
+//! http::load_local_data();
+//!
+//! // Access cached data
+//! &CACHE.lock().unwrap().banlists;
+//! &CACHE.lock().unwrap().cardinfo;
+//! &CACHE.lock().unwrap().cardsets;
 //!
 //! // Get all cards from the 3 Battle Pack main sets
 //! let battle_pack_cards = CACHE.lock().unwrap().get_cards_from_sets(

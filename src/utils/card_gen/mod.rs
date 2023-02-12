@@ -25,13 +25,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //! [`Cache::get_cards_from_sets`][`crate::logic::utils::Cache::get_cards_from_sets`].
 //!
 //! ```rust
-//! use ygo_destiny::logic::utils::card_gen::CardGenerator;
+//! use ygod_core::utils::card_gen::CardGenerator;
 //!
 //! // Define the card pool
 //! let card_pool: Vec<u32> = vec![0, 1, 2, 3, 4, 5];
 //!
 //! // Set how many times each card should be in the card pool
-//! let duplicates: u32 = 3;
+//! let duplicates: usize = 3;
 //!
 //! // Create a new card generator
 //! let mut cg = CardGenerator::new(card_pool, duplicates);
@@ -46,12 +46,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //!
 //! assert_eq!(cards.len(), batches);
 //! assert_eq!(cards[0].len(), cards_per_batch);
-//! ```
 //!
-//! To remove an duplicates from the card pool beforehand use `CardGenerator::new_dedup`:
+//! // To remove an duplicates from the card pool beforehand use `CardGenerator::new_dedup`:
 //!
-//! ```rust
-//! let mut cg = CardGenerator::new_dedup(card_pool, duplicate);
+//! let card_pool: Vec<u32> = vec![0, 1, 2, 3, 4, 5];
+//! let mut cg = CardGenerator::new_dedup(card_pool, duplicates);
 //! ```
 
 use rand::rngs::ThreadRng;
@@ -98,6 +97,11 @@ impl CardGenerator {
 
     /// Constructs a [`CardGenerator`], but de-duplicates the card pool first. Same arguments as
     /// [`new`][`CardGenerator::new`].
+    ///
+    /// # Arguments
+    ///
+    /// * `cards` – The card pool of the card generator. The cards will be de-duplicated.
+    /// * `dups` – The number of times each card can be generated. Set to `0` for no limit.
     pub fn new_dedup(cards: Vec<u32>, dups: usize) -> CardGenerator {
         let mut cards_mut = cards.to_vec();
         cards_mut.sort_unstable();
