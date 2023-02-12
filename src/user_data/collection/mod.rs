@@ -15,18 +15,16 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-mod action;
 mod card;
 mod change;
 mod collection_builder;
-mod draft_settings;
+mod draft_box;
 mod meta_data;
 
-pub use action::Action;
 pub use card::Card;
 pub use change::Change;
 pub use collection_builder::CollectionBuilder;
-pub use draft_settings::{DraftSettings, SetRotation};
+pub use draft_box::{DraftBox, DraftBoxMeta, SetRotation};
 pub use meta_data::MetaData;
 
 use std::collections::{HashMap, VecDeque};
@@ -55,8 +53,8 @@ pub struct Collection {
     pub meta_data: MetaData,
     pub cards: HashMap<Card, u8>,
     pub changes: VecDeque<Change>,
+    pub draft_boxes: Vec<(DraftBoxMeta, DraftBox)>,
     pub tags: HashMap<String, Vec<Card>>,
-    pub actions: Vec<Action>,
 }
 
 impl Collection {

@@ -24,12 +24,27 @@ pub use battle_pack_settings::BattlePackSettings;
 pub use choice_settings::ChoiceSettings;
 
 #[derive(Serialize, Deserialize, Default, Debug)]
-pub enum DraftSettings {
+pub enum DraftBox {
     #[default]
     None,
     BattlePackDraft(BattlePackSettings),
     ChoiceDraft(ChoiceSettings),
     // StandardDraft(StandardSettings),
+}
+
+impl DraftBox {
+    pub fn is_battle_pack_draft(&self) -> bool {
+        match self {
+            DraftBox::BattlePackDraft(_) => true,
+            _ => false,
+        }
+    }
+}
+
+#[derive(Serialize, Deserialize, Default, Debug)]
+pub struct DraftBoxMeta {
+    pub name: String,
+    pub description: String,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug)]

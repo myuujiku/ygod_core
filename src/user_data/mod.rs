@@ -20,7 +20,7 @@ mod collection;
 
 pub use collection::{
     Collection,
-    DraftSettings,
+    DraftBox,
     MetaData,
     LAST_CHANGED_FORMAT,
 };
